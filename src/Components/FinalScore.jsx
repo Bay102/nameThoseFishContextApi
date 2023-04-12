@@ -1,15 +1,18 @@
 import React from "react";
-const correctCount = 0;
-const totalCount = 0;
+import { useAppContext } from "../AppContext.context";
 
-// ! Do Not Add Props Here
-export const FinalScore = () => (
+
+export const FinalScore = () => {
+  const {correct} = useAppContext();
+
+  return (
   <div id="final-score">
     <h1>Your Final Score Was</h1>
     <div id="score">
-      <p>{correctCount}</p>
+      <p>{correct}</p>
       <hr />
-      <p>{totalCount}</p>
+      <p>4</p>
     </div>
   </div>
-);
+  )
+};
