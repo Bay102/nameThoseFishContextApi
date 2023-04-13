@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 
 import './Components/styles/final-score.css';
-import { AppProvider } from './AppContext.context';
+
 import { Game } from './Components/Game';
+import { AppProvider } from './AppContext';
 
 function App() {
   return (

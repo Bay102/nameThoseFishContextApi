@@ -1,14 +1,13 @@
 import './styles/game-board.css';
-import React from 'react';
-import { useAppContext } from '../AppContext.context';
+import React, { useState } from 'react';
+import { useAppContext } from '../AppContext';
 
-// ! Do not add props to gameboard
 export const GameBoard = () => {
-  const { userEntry, setUserEntry, fish, matchFish } = useAppContext();
-
+  const [userEntry, setUserEntry] = useState('');
+  const { fish, matchFish } = useAppContext();
   const nextFishToName = fish[0];
 
-  const fishInput = ({ target: { value } }) => {
+  const fishInputHandler = ({ target: { value } }) => {
     setUserEntry(value);
   };
 
@@ -22,7 +21,8 @@ export const GameBoard = () => {
         onSubmit={(e) => {
           e.preventDefault();
           if (userEntry) {
-            matchFish();
+            matchFish(userEntry);
+            setUserEntry('');
           }
         }}
       >
@@ -31,7 +31,7 @@ export const GameBoard = () => {
           type="text"
           name="fish-guess"
           value={userEntry}
-          onChange={fishInput}
+          onChange={fishInputHandler}
         />
         <input type="submit" />
       </form>
